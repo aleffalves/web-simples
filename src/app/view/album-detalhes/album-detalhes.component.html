@@ -1,0 +1,16 @@
+<div class="header">
+  <button class="back-button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h1 class="album-title">Fotos do Álbum {{ albumId }}</h1>
+</div>
+
+<div class="photo-grid">
+  <div *ngFor="let foto of fotos" class="photo-container">
+    <div class="photo-placeholder" *ngIf="!foto.loaded">
+      <span class="placeholder-icon">📷</span>
+    </div>
+    <img [src]="foto.url" alt="{{ foto.title }}" class="photo-image" (load)="onImageLoad(foto)" [hidden]="!foto.loaded">
+    <div class="photo-title">{{ foto.title }}</div>
+  </div>
+</div>

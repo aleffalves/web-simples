@@ -1,0 +1,17 @@
+<div class="album-grid">
+  <div *ngFor="let album of albums" class="album-card" (click)="viewAlbumDetails(album.id)">
+    <div class="album-image-container">
+      <img
+        [src]="albumPhotos[album.id]"
+        alt="Thumbnail"
+        class="album-image"
+        (load)="onImageLoad(album)"
+        [hidden]="!album.loaded"
+      >
+      <div class="album-placeholder" *ngIf="!album.loaded">
+        <span class="placeholder-icon">📷</span>
+      </div>
+    </div>
+    <div class="album-title">{{ album.title }}</div>
+  </div>
+</div>
